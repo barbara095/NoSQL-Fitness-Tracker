@@ -14,14 +14,15 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Accessing public directory
 app.use(express.static("public"));
 
-// const routes = require("./routes/api.js");
-
-// app.use(routes);
+// Requiring our routes
+app.use(require("./routes/api-routes.js"));
+app.use(require("./routes/html-routes.js"));
 
 mongoose.connect(process.env.MONGODB_URI || 
-    "mongodb://localhost/fitness", { 
+    "mongodb://localhost/workout", { 
       useNewUrlParser: true, 
       useUnifiedTopology: true, 
       useFindAndModify: false },
