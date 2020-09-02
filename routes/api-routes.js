@@ -15,3 +15,5 @@ router.get("api/workouts", ({ body }, res) => {
 });
 
 // Route for getting exercise data from model
+
+module.exports = router
