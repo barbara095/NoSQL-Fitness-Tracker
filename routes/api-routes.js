@@ -1,44 +1,17 @@
-const models = require("../models");
-
+const router = require("express").Router();
+const Workout = require("../models/workouts.js");
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+// Route for getting workout data from model
+router.get("api/workouts", ({ body }, res) => {
+  Workout.find(body)
+  .then(dbWorkout => {
+    res.json(dbWorkout);
+  })
+  .catch(err => {
+    res.status(400).json(err);
+  })
+});
 
-  // Search for Specific Character (or all characters) then provides JSON
-  app.get("/api/:characters?", function(req, res) {
-
-    // If the user provides a specific character in the URL...
-    if (req.params.characters) {
-
-      // Then display the JSON for ONLY that character.
-      // (Note how we're using the ORM here to run our searches)
-      orm.searchCharacter(req.params.characters, function(data) {
-        res.json(data);
-      });
-    }
-
-    // Otherwise...
-    else {
-      // Otherwise display the data for all of the characters.
-      // (Note how we're using the ORM here to run our searches)
-      orm.allCharacters(function(data) {
-        res.json(data);
-      });
-    }
-
-  });
-
-  // If a user sends data to add a new character...
-  app.post("/api/new", function(req, res) {
-
-    // Take the request...
-    var character = req.body;
-
-    // Then send it to the ORM to "save" into the DB.
-    orm.addCharacter(character, function(data) {
-      console.log(data);
-    });
-
-  });
-};
+// Route for getting exercise data from model
