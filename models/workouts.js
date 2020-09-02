@@ -13,7 +13,11 @@ const WorkoutSchema = new Schema({
     sets: Number
   },
   
-  day: Date
+  day: {
+    type: Date,
+    default: Date.now
+  }
+
 });
 
 const Workout = mongoose.model("Workout", WorkoutSchema);
