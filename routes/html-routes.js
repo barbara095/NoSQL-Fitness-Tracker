@@ -1,24 +1,19 @@
 const path = require("path");
 
 module.exports = function(app) {
-
-    // Each of the below routes just handles the HTML page that the user gets sent to.
-  
-    // index route loads view.html
+    // index route loads index.html
     app.get("/", function(req, res) {
       res.sendFile(path.join(__dirname, "../public/index.html"));
     });
   
-    // add route loads the add.html page,
-    // where users can enter new characters to the db
+    // exercise route loads exercise.html
     app.get("/exercise", function(req, res) {
       res.sendFile(path.join(__dirname, "../public/exercise.html"));
     });
   
-    // all route loads the all.html page,
-    // where all characters in the db are displayed
+    // stats route loads stats.html
     app.get("/stats", function(req, res) {
       res.sendFile(path.join(__dirname, "../public/stats.html"));
     });
   
-  };
+};
