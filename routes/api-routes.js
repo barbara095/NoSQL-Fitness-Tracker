@@ -27,7 +27,7 @@ router.post("api/workouts", ({ body }, res) => {
 });
 
 // Route for updating workout data 
-router.put("api/workouts/:id", ({ body }, res) => {
+router.put("api/workouts/:id", (req, res) => {
   Workout.findOneAndUpdate ({
     _id: req.params.id
   }, {
