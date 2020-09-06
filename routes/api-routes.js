@@ -5,8 +5,8 @@ const Workout = require("../models/workouts.js");
 // Routes
 // =============================================================
 // Route for getting workout data from model
-router.get("/api/workouts", (req, res) => {
-  Workout.find(body)
+router.get("/api/workouts", (req , res) => {
+  Workout.find(req.body)
   .then(dbWorkout => {
     res.json(dbWorkout);
   })
@@ -43,8 +43,8 @@ router.put("/api/workouts/:id", (req, res) => {
 });
 
 // Route for getting workouts in range
-router.get("/api/workouts/range", ({ body }, res) => {
-  Workout.find(body)
+router.get("/api/workouts/range", (req, res) => {
+  Workout.find(req.body)
   .then(dbWorkout => {
     res.json(dbWorkout);
   })
