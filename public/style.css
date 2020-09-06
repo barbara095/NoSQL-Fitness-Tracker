@@ -25,6 +25,11 @@ nav {
   font-size: 1.2rem;
 }
 
+#dashboard {
+  color: lightpink;
+  font-weight: 500;
+}
+
 a,
 a:hover,
 a:active,
